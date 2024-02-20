@@ -11,11 +11,15 @@ import org.uncommons.watchmaker.framework.termination.GenerationCount;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Random;
 
 public class IslandsAlg {
 
     public static void main(String[] args) {
+
+        double d = new Date().getTime();
+
         int dimension = 50; // dimension of problem
         int complexity = 1; // fitness estimation time multiplicator
         int populationSize = 50; // size of population
@@ -54,5 +58,8 @@ public class IslandsAlg {
 
         TerminationCondition terminate = new GenerationCount(generations);
         island_model.evolve(populationSize, 1, 50, 2, terminate);
+
+        double e = new Date().getTime();
+        System.out.printf("It took %.2f seconds\n", (e-d)/1000);
     }
 }

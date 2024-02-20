@@ -7,11 +7,15 @@ import org.uncommons.watchmaker.framework.termination.GenerationCount;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Random;
 
 public class MasterSlaveAlg {
 
     public static void main(String[] args) {
+
+        double d = new Date().getTime();
+
         int dimension = 10; // dimension of problem
         int complexity = 1; // fitness estimation time multiplicator
         int populationSize = 50; // size of population
@@ -46,5 +50,8 @@ public class MasterSlaveAlg {
 
         TerminationCondition terminate = new GenerationCount(generations);
         algorithm.evolve(populationSize, 1, terminate);
+
+        double e = new Date().getTime();
+        System.out.printf("It took %.2f seconds\n", (e-d)/1000);
     }
 }
