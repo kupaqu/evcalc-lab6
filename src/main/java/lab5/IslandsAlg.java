@@ -34,7 +34,8 @@ public class IslandsAlg {
 
         FitnessEvaluator<double[]> evaluator = new MultiFitnessFunction(dimension, complexity); // Fitness function
 
-        IslandEvolution<double[]> island_model = null; // your model;
+        RingMigration migration = new RingMigration();
+        IslandEvolution<double[]> island_model = new IslandEvolution<>(10, migration, factory, pipeline, evaluator, selection, random); // your model;
 
         island_model.addEvolutionObserver(new IslandEvolutionObserver() {
             public void populationUpdate(PopulationData populationData) {
